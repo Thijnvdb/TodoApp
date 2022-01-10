@@ -1,0 +1,220 @@
+/* Provide sufficient contrast against white background */
+$primary:#10b981;
+@import "bootstrap";
+
+.app {
+  height: 100vh;
+}
+
+select {
+  outline: none;
+  cursor: pointer;
+}
+
+header {
+  height: 10vh;
+}
+
+.contextMenu {
+  background-color: map-get($theme-colors, "light");
+  color: map-get($theme-colors, "dark");
+  border-radius: 1rem;
+  border: 1px solid map-get($theme-colors, "dark");
+  position: absolute;
+  width: 8vw;
+  min-height: 1vh;
+  list-style: none;
+  padding: 0;
+  overflow: hidden;
+
+  li {
+    transition: 0.1s ease-in;
+    margin: auto;
+    color: map-get($theme-colors, "dark");
+    cursor: pointer;
+    &:hover {
+      background-color: darken(map-get($theme-colors, "light"), 10);
+    }
+    
+    h3 {
+      margin: 0;
+      font-size: 1rem;
+      text-align: center;
+    }
+  }
+}
+
+.addCat {
+  margin-left: auto;
+  margin-right: 2rem;
+  
+  svg {
+    margin-left: 1rem;
+  }
+  
+}
+
+.settingsBar {
+  height: 3.5vh;
+  width: 99%;
+  margin: 0.7vh auto 0.8vh auto;
+  border-radius: 0.75rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  
+  > * {
+    margin: auto 0.6rem; 
+  }
+  
+  button {
+    height: 100%;
+    padding:0 0.4rem;
+  }
+  
+  //span {
+  //  height: 3vh;
+  //  padding: .25vh 1rem;
+  //  margin: auto 1rem;
+  //  display: flex;
+  //  justify-content: space-around;
+  //  border-radius: 1rem;
+  //  overflow: hidden;
+  //  h4 {
+  //    font-size: 0.9rem;
+  //    margin:auto;
+  //  }
+  //  input{
+  //    user-select: none;
+  //    border:none;
+  //    font-size: 0.9rem;
+  //    width: 2.2rem;
+  //    outline: none;
+  //  }
+  //}
+}
+
+.boardWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 85vh;
+  
+  .board {
+    display: grid;
+    height: 98%;
+    width: 98%;
+    border-radius: 1rem;
+
+    .tile {
+      cursor: pointer;
+      transition: 0.1s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: map-get($theme-colors, "light");
+      border: 1px solid darken(map-get($theme-colors, "light"), 5);
+      &.hover {
+        background-color: darken(map-get($theme-colors, "light"), 5);
+      }
+      
+      .item {
+        position: relative;
+        transition: 0.1s ease-in;
+        background-color: map-get($theme-colors, "primary");
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        width: 90%;
+        height: 90%;
+        overflow: hidden;
+        
+        h1, textarea {
+          font-size: 1rem;
+        }
+
+        textarea {
+          overflow: hidden;
+          color: map-get($theme-colors, "dark");
+          -moz-text-size-adjust: auto;
+          -ms-text-size-adjust: auto;
+          -webkit-text-size-adjust: auto;
+          width: 100%;
+          height: 100%;
+          resize: none;
+          background-color: transparent;
+          border: none;
+          cursor: text;
+          caret-color: map-get($theme-colors, "dark");
+          outline: none;
+        }
+        
+        .save {
+          right: 0.5rem;
+        }
+        
+        .cancel {
+          left: 0.5rem;
+        }
+        
+        .save, .cancel {
+          bottom:0.5rem;
+          cursor: pointer;
+          border-radius: 50%;
+          width: 2rem;
+          height: 2rem;
+          position: absolute;
+          background-color: map-get($theme-colors, "dark");
+          padding: 0.1rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: 0.1s ease-in;
+          
+          &:hover {
+            background-color: lighten(map-get($theme-colors, "dark"), 10);
+          }
+          svg {
+            color: map-get($theme-colors, "light");
+            margin:auto;
+          }
+        }
+        
+        &.done {
+          background-color: transparentize(map-get($theme-colors, "primary"), 0.5);
+          color: transparentize(map-get($theme-colors, "dark"), 0.5);
+        }
+        
+        .context {
+          bottom: 0;
+          left: 0;
+          position: absolute;
+          width: 100%;
+          height: 0;
+          background-color:  map-get($theme-colors, "dark");
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          justify-content: space-around;
+          overflow: hidden;
+          
+          transition: 0.1s ease-in;
+          &.expanded {
+            height: 40%;
+          }
+          
+          .icon {
+            svg {
+              color: map-get($theme-colors, "light");
+              margin:auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}
